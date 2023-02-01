@@ -7,8 +7,9 @@ import java.util.List;
 public class Main {
 
     public static class MyThread implements Runnable {
-        List<Integer> list;
-        int no;
+        private List<Integer> list;
+        private int no;
+        private static List<Integer> minArray = new ArrayList<Integer>();
 
         public MyThread(List<Integer> list, int i) {
             this.list = list;
@@ -22,6 +23,8 @@ public class Main {
                 if(el < min)
                     min = el;
             System.out.println("Thread" + no + " - " + min);
+            minArray.add(min);
+            System.out.println("Min lista: " + minArray);
         }
     }
 
@@ -39,6 +42,7 @@ public class Main {
             thread.start();
             i++;
         }
+
 
         System.out.println("Hello");
     }
